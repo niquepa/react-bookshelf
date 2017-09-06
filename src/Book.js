@@ -38,7 +38,7 @@ class Book extends Component {
 							<select value={shelf} onChange={ event => this.handleUpdateShelve(book, event.target.value)}>
 								<option value="none" disabled>Move to...</option>
 								{shelves.map((shelve) => (
-									<option value={shelve.id}>{shelve.name}</option>
+									<option key={shelve.id} value={shelve.id}>{shelve.name}</option>
 								))}
 								{ shelf !== '' &&
 									<option value="">None</option>

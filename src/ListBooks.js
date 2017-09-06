@@ -15,7 +15,7 @@ class ListBooks extends Component {
 				<div className="list-books-content">
 					<div>
 						{shelves.map((shelve) => (
-							<div className="bookshelf">
+							<div className="bookshelf" key={shelve.id}>
 								<h2 className="bookshelf-title">{shelve.name}</h2>
 								<div className="bookshelf-books">
 									<ol className="books-grid">
