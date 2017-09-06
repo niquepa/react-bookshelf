@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Route } from 'react-router-dom'
 import * as BooksAPI from './utils/BooksAPI'
 import './App.css'
@@ -68,6 +68,16 @@ class BooksApp extends React.Component {
 		]
 	}
 
+	updateBookShelve = (item, shelve) =>  {
+		this.setState((prevState => {
+			books: prevState.books.map((book) => {
+				if (book.id === item.id)
+					book.shelve = shelve
+			})
+		}))
+	}
+	
+	
   render() {
     return (
       <div className="app">
@@ -75,7 +85,7 @@ class BooksApp extends React.Component {
 	      	<SearchBooks books={this.state.books} shelves={this.state.shelves} />
 	      )} />
 				<Route exact path="/" render={() => (
-					<ListBooks books={this.state.books} shelves={this.state.shelves} />
+					<ListBooks books={this.state.books} shelves={this.state.shelves} updateBookShelve={this.updateBookShelve} />
 				)} />
       </div>
     )

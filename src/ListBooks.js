@@ -18,7 +18,7 @@ class ListBooks extends Component {
 								<div className="bookshelf-books">
 									<ol className="books-grid">
 										{this.props.books.filter((book) => shelve.id === book.shelve).map((book) => (
-											<Book book={book} shelves={this.props.shelves} />
+											<Book book={book} shelves={this.props.shelves} updateBookShelve={this.props.updateBookShelve} />
 										))}
 									</ol>
 								</div>
