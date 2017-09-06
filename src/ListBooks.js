@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 import Book from './Book'
 
 class ListBooks extends Component {
+	
 	render()  {
+		const { myBooks, shelves } = this.props
+		
 		return(
 			<div className="list-books">
 				<div className="list-books-title">
@@ -12,14 +15,18 @@ class ListBooks extends Component {
 				</div>
 				<div className="list-books-content">
 					<div>
-						{this.props.shelves.map((shelve) => (
+						{shelves.map((shelve) => (
 							<div className="bookshelf">
 								<h2 className="bookshelf-title">{shelve.name}</h2>
 								<div className="bookshelf-books">
 									<ol className="books-grid">
-										{this.props.books.filter((book) => shelve.id === book.shelve).map((book) => (
-											<Book book={book} shelves={this.props.shelves} updateBookShelve={this.props.updateBookShelve} />
-										))}
+										{myBooks ? (
+											myBooks.filter((book) => shelve.id === book.shelf).map((book) => (
+												<Book key={book.id} book={book} shelves={shelves} myBooks={myBooks} updateBookShelve={this.props.updateBookShelve} />
+											))
+										) : (
+											''
+										)}
 									</ol>
 								</div>
 							</div>
